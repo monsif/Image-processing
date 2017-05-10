@@ -1,70 +1,29 @@
-/*******************************************************************************
-* ImageProcessing.cpp : le fichier header de la classe CImageProcessing
-*******************************************************************************
-*
-*
-*
-*******************************************************************************
-* author	: Amine ELKHARROUBI
-* date		:
-* version	:
-*******************************************************************************
-*  LISTE DES CLASSES DU MODULE :
-*
-*  Class       : CImageProcessing
-*  Description :
-*
-*  LISTE DES FONCTIONS DU MODULE :
-*
-*******************************************************************************
-* MODIFICATIONS
-* -----------------------------------------------------------------------------
-* Date			: Ver	: Auteur	: Ident		: Commentaires
-* -----------------------------------------------------------------------------
-* 	            : 	    : 	       :	        :
-**************************************************************************** */
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
-// FICHIERS D'INCLUSION
 
 #include "ImageProcessing.h"
+#include "opencv2/highgui/highgui.hpp"
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/core/core.hpp"
 
-// -----------------------------------------------------------------------------
-using namespace std;
+using namespace cv;
 
 
 
-// -----------------------------------------------------------------------------
-// CImageProcessing::CImageProcessing
-/////** \brief Le constructeur de la classe CImageProcessing.
-/*
-* @param[char* ]
-* @exception
-* @return
-*
-* @details Traitement :
-*
-*
-*/
-// -----------------------------------------------------------------------------
+Mat CImageProcessing::BlackAndWhiteFilter(char * imageSrc)
+{
+	Mat src = imread(imageSrc, 1);
+	Mat gray_image;
+	cvtColor(src, gray_image, CV_BGR2GRAY);
+	return gray_image;
+}
+
 CImageProcessing::CImageProcessing()
 {
 }
 
-// -----------------------------------------------------------------------------
-// CImageProcessing::~CImageProcessing
-/////** \brief Le destructeur de la classe CImageProcessing.
-/*
-* @param[char* ]
-* @exception
-* @return
-*
-* @details Traitement :
-*
-*
-*/
-// -----------------------------------------------------------------------------
+
 CImageProcessing::~CImageProcessing()
 {
 }
+
+
+
