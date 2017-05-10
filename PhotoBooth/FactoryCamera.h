@@ -31,15 +31,54 @@
 // -----------------------------------------------------------------------------
 // FICHIERS D'INCLUSION
 
-
+#include "PhotoBoothHeader.h"
+#include "Camera.h"
+#include "Liste.h"
 
 // -----------------------------------------------------------------------------
 class CFactoryCamera
 {
+
+private:
+
+	static CListe *m_pListeCamera;
+
+protected:
+
+	char m_szNameFactory[MAX_SIZE_STRING];
+
 public:
-	CFactoryCamera();
-	~CFactoryCamera();
+
+	CFactoryCamera(char *pNameCamera);
+	~CFactoryCamera(void);
+
+	virtual CCamera* NewInstance() = 0;
+	static CCamera* CreateInstance(const char *pNameCamera);
+	char* GetFactoryName(void);
 };
 
+template<class TypeCamera>class TFactoryCamera :public CFactoryCamera
+{
+
+public:
+	TFactoryCamera(char *pNameCamera)
+		: CFactoryCamera(pNameCamera)
+	{
+	};
+
+	~TFactoryCamera()
+	{
+	};
+
+	CCamera* NewInstance()
+	{
+		return new TypeCamera;
+	};
+
+};
+
+#define		DECLARE_CAMERA_FACTORY(type) TFactoryCamera<type> _TW##type(#type);
+
 #endif //FACTORYCAMERA_H_
+
 
