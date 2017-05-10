@@ -1,5 +1,5 @@
 /*******************************************************************************
-* TakePhotoWindow.cpp : le fichier header de la classe QTakePhotoWindow
+* Message.h : le fichier header de la classe CMessage
 *******************************************************************************
 *
 *
@@ -11,7 +11,7 @@
 *******************************************************************************
 *  LISTE DES CLASSES DU MODULE :
 *
-*  Class       : QTakePhotoWindow
+*  Class       : CMessage
 *  Description :
 *
 *  LISTE DES FONCTIONS DU MODULE :
@@ -24,48 +24,32 @@
 * 	            : 	    : 	       :	        :
 **************************************************************************** */
 // -----------------------------------------------------------------------------
-
+#ifndef MESSAGEH
+#define MESSAGEH
 // -----------------------------------------------------------------------------
 // FICHIERS D'INCLUSION
 
-#include "TakePhotoWindow.h"
-
+#include "PhotoBoothHeader.h"
 // -----------------------------------------------------------------------------
 
-
-// -----------------------------------------------------------------------------
-// QTakePhotoWindow::QTakePhotoWindow
-/////** \brief Le constructeur de la classe QTakePhotoWindow.
-/*
-* @param[char* ]
-* @exception
-* @return
-*
-* @details Traitement :
-*
-*
-*/
-// -----------------------------------------------------------------------------
-QTakePhotoWindow::QTakePhotoWindow(QWidget *parent)
-	: QWidget(parent)
-{
-	ui.setupUi(this);
-}
-
-// -----------------------------------------------------------------------------
-// QTakePhotoWindow::~QTakePhotoWindow
-/////** \brief Le destructeur de la classe QTakePhotoWindow.
-/*
-* @param[char* ]
-* @exception
-* @return
-*
-* @details Traitement :
-*
-*
-*/
-// -----------------------------------------------------------------------------
-QTakePhotoWindow::~QTakePhotoWindow()
+class CMessage
 {
 
-}
+private:
+
+	char		m_szData[MAX_SIZE_MSG_LOG];
+	char		m_szType[MAX_SIZE_STRING];
+	char		m_szDate[MAX_SIZE_STRING];
+
+public:
+	CMessage(void);
+	~CMessage(void);
+	CMessage(const char* pType, const char* pMessage);
+	void		GetCurrentDate(void);
+	char*		GetData(void);
+	char*		GetDate(void);
+	char*		GetType(void);
+};
+
+#endif //MESSAGEH
+

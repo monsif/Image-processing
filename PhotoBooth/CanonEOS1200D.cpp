@@ -1,5 +1,5 @@
 /*******************************************************************************
-* CanonEOS1200D.cpp : le fichier header de la classe CCanonEOS1200D
+* CanonEOS1200D.cpp : le fichier cpp de la classe CCanonEOS1200D
 *******************************************************************************
 *
 *

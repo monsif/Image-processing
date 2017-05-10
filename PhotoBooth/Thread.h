@@ -29,14 +29,44 @@
 // -----------------------------------------------------------------------------
 // FICHIERS D'INCLUSION
 
-
+#include "windows.h"
 // -----------------------------------------------------------------------------
 
 class CThread
 {
+protected:
+
+	HANDLE m_hThread;
+	HANDLE m_hStopThread;
+	HANDLE m_hRunThread;
+	LPVOID m_iParam;
+	int    m_iPriority_m;
+	BOOL   m_bExit;
+
 public:
+
 	CThread();
-	~CThread();
+	virtual ~CThread();
+
+	virtual void Run();
+	virtual void Stop();
+	virtual void Pause();
+	virtual void WaitEnd();
+	virtual void SetPriority(int iPriority);
+	virtual void SetBoolThread(BOOL bBool);
+
+protected:
+
+	virtual void MainTreatement();
+	HANDLE CreateMainThread(LPVOID pParam, int iPriority,
+		LPTHREAD_START_ROUTINE pFunction, DWORD dwCreationFlags);
+	void uSleep(int waitTime);
+
+private:
+
+	static UINT WINAPI MainLoop(LPVOID lpParam);
+	int LoopTraitement(void);
+
 };
 
 #endif //THREAD_H_

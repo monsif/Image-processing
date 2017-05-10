@@ -1,5 +1,5 @@
 /*******************************************************************************
-* FactoryCamera.cpp : le fichier header de la classe CFactoryCamera
+* FactoryPhotoBoothPrinter.cpp : le header de la classe CFactoryPhotoBoothPrinter
 *******************************************************************************
 *
 *
@@ -11,7 +11,7 @@
 *******************************************************************************
 *  LISTE DES CLASSES DU MODULE :
 *
-*  Class       : CFactoryCamera
+*  Class       : CFactoryPhotoBoothPrinter
 *  Description :
 *
 *  LISTE DES FONCTIONS DU MODULE :
@@ -25,55 +25,56 @@
 **************************************************************************** */
 // -----------------------------------------------------------------------------
 
+
 // -----------------------------------------------------------------------------
 // FICHIERS D'INCLUSION
 
-#include "FactoryCamera.h"
+#include "FactoryPhotoBoothPrinter.h"
 
 // -----------------------------------------------------------------------------
 using namespace std;
 
 
-CListe* CFactoryCamera::m_pListeCamera = NULL;
+CListe* CFactoryPhotoBoothPrinter::m_pListePhotoBoothPrinter = NULL;
 // -----------------------------------------------------------------------------
-// CFactoryCamera::CFactoryCamera
-/** \brief Le constructeur de la classe abstraite CFactoryCamera.
+// CFactoryPhotoBoothPrinter::CFactoryPhotoBoothPrinter
+/** \brief Le constructeur de la classe abstraite CFactoryPhotoBoothPrinter.
 *
 * @param[char* ]
 * @exception
 * @return
 *
 * @details Traitement :
-* Le constructeur de la classe CFactoryCamera, est appelé par la template
-* TFactoryCamera.
+* Le constructeur de la classe CFactoryPhotoBoothPrinter, est appelé par la template
+* TFactoryPhotoBoothPrinter.
 * Il stock une reference vers l'objet créer dans une liste.
 *
 */
 // -----------------------------------------------------------------------------
-CFactoryCamera::CFactoryCamera(char *pNameCamera)
+CFactoryPhotoBoothPrinter::CFactoryPhotoBoothPrinter(char *pNamePhotoBoothPrinter)
 {
-	if(m_pListeCamera == NULL)
-		m_pListeCamera = new CListe();
-	strncpy_s(m_szNameFactory, MAX_SIZE_STRING, pNameCamera,
+	if (m_pListePhotoBoothPrinter == NULL)
+		m_pListePhotoBoothPrinter = new CListe();
+	strncpy_s(m_szNameFactory, MAX_SIZE_STRING, pNamePhotoBoothPrinter,
 		MAX_SIZE_STRING);
-	m_pListeCamera->PushFIFO(this);
+	m_pListePhotoBoothPrinter->PushFIFO(this);
 }
 
 // -----------------------------------------------------------------------------
-// CFactoryCamera::~CFactoryCamera
-/** \brief Le destructeur de la classe abstraite CFactoryCamera.
+// CFactoryPhotoBoothPrinter::~CFactoryPhotoBoothPrinter
+/** \brief Le destructeur de la classe abstraite CFactoryPhotoBoothPrinter.
 *
 * @param[ ]
 * @exception
 * @return
 *
 * @details Traitement :
-* Le destructeur de la classe CFactoryCamera
+* Le destructeur de la classe CFactoryPhotoBoothPrinter
 *
 */
 // -----------------------------------------------------------------------------
 
-CFactoryCamera::~CFactoryCamera(void)
+CFactoryPhotoBoothPrinter::~CFactoryPhotoBoothPrinter(void)
 {
 	/* if(pListeFact_m)
 	{
@@ -85,7 +86,7 @@ CFactoryCamera::~CFactoryCamera(void)
 }
 
 // -----------------------------------------------------------------------------
-// CFactoryCamera::CreateInstance
+// CFactoryPhotoBoothPrinter::CreateInstance
 /** \brief Cette m'éthode retourne un pointeur sur un objet .
 *
 * @param[const char* ]
@@ -93,37 +94,37 @@ CFactoryCamera::~CFactoryCamera(void)
 * @return CCarteExtension*
 *
 * @details Traitement :
-* Cette méthode recherche  un objet portant le nom pNameCamera
+* Cette méthode recherche  un objet portant le nom pNamePhotoBoothPrinter
 * et fait appele à sa méthode NewInstance() qui retourne un pointeur sur
-* un objet, du type passé à la template TFactoryCamera
+* un objet, du type passé à la template TFactoryPhotoBoothPrinter
 * et la méthode CreateInstance() le retounrne
 */
 // -----------------------------------------------------------------------------
-CCamera* CFactoryCamera::CreateInstance(const char *pNameCamera)
+CPhotoBoothPrinter* CFactoryPhotoBoothPrinter::CreateInstance(const char *pNamePhotoBoothPrinter)
 {
-	CCamera		   *pCamera = NULL;
-	CFactoryCamera *pFactCamera = NULL;
+	CPhotoBoothPrinter		   *pPhotoBoothPrinter = NULL;
+	CFactoryPhotoBoothPrinter *pFactPhotoBoothPrinter = NULL;
 	int					iIndex = 0;
 
-	if(m_pListeCamera)
+	if (m_pListePhotoBoothPrinter)
 	{
-		for(iIndex = 0; iIndex < m_pListeCamera->CountElements(); iIndex++)
+		for (iIndex = 0; iIndex < m_pListePhotoBoothPrinter->CountElements(); iIndex++)
 		{
-			pFactCamera =
-				(CFactoryCamera*)m_pListeCamera->PopIndex(iIndex);
-			if(pFactCamera && strncmp(pNameCamera,
-				pFactCamera->GetFactoryName(), MAX_SIZE_STRING) == NULL)
+			pFactPhotoBoothPrinter =
+				(CFactoryPhotoBoothPrinter*)m_pListePhotoBoothPrinter->PopIndex(iIndex);
+			if (pFactPhotoBoothPrinter && strncmp(pNamePhotoBoothPrinter,
+				pFactPhotoBoothPrinter->GetFactoryName(), MAX_SIZE_STRING) == NULL)
 			{
-				pCamera = pFactCamera->NewInstance();
+				pPhotoBoothPrinter = pFactPhotoBoothPrinter->NewInstance();
 				break;
 			}
 		}
 	}
-	return pCamera;
+	return pPhotoBoothPrinter;
 }
 
 // -----------------------------------------------------------------------------
-// CFactoryCamera::GetFactoryName
+// CFactoryPhotoBoothPrinter::GetFactoryName
 /** \brief Cette m'éthode .
 *
 * @param[void ]
@@ -136,7 +137,7 @@ CCamera* CFactoryCamera::CreateInstance(const char *pNameCamera)
 */
 // -----------------------------------------------------------------------------
 
-char* CFactoryCamera::GetFactoryName(void)
+char* CFactoryPhotoBoothPrinter::GetFactoryName(void)
 {
 	return m_szNameFactory;
 }
