@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Camera.cpp : le fichier header de la classe CCamera
+* Camera.cpp : le fichier cpp de la classe CCamera
 *******************************************************************************
 *
 *
