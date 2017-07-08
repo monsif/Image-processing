@@ -12,7 +12,7 @@
 #include "json.hpp"
 using namespace cv;
 using namespace std;
-using json = Json::json;
+using json = nlohmann::json;
 
 int main(int argc, char** argv)
 {
@@ -39,15 +39,16 @@ int main(int argc, char** argv)
 //	pImageProcessing->SaveImageProcessing("C:\\Image_Test\\charlize-theron_filter.jpg", imageOut);
 
 	AllocConsole();
-	freopen("coinin$", "w", stdout);
+	freopen("conin$", "w", stdout);
+	freopen("conout$", "w", stdout);
+	freopen("conout$", "w", stderr);
 	
 	//use argv to get configuration urls
 	CFunctionalConf *functionalConf = new CFunctionalConf();
 	functionalConf->LoadConf("C:\\projects\\PhotoBooth\\photobooth_data\\functional.json");
 	json result = functionalConf->GetConfiguration();
-	
-	std::string s = result.dump(2);
-	printf("Functional Properties : %s",s);
+	std::cout << result.dump(2);
+
 	
 	getchar();
 	waitKey(0);

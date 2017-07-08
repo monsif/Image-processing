@@ -105,7 +105,7 @@ SOFTWARE.
 @see https://github.com/nlohmann
 @since version 1.0.0
 */
-namespace Json
+namespace nlohmann
 {
 
 /*!

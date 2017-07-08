@@ -32,7 +32,7 @@
 #include "json.hpp"
 
 // -----------------------------------------------------------------------------
-using json = Json::json;
+using json = nlohmann::json;
 class CConfig
 {
 private:

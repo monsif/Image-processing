@@ -72,6 +72,7 @@ bool CConfig::LoadConf(char url[])
 
 bool CConfig::LoadDefaultConf() {
 	//load static data
+	return false;
 }
 
 json CConfig::GetConfiguration() {
