@@ -1,14 +1,18 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////   Test CImageProcessing         ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#include "ImageProcessing.h"
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
 #include <iostream>
-
+#include "ImageProcessing.h"
+#include "FunctionalConf.h"
+#include "TechnicalConf.h"
+#include "json.hpp"
 using namespace cv;
 using namespace std;
+using json = Json::json;
 
 int main(int argc, char** argv)
 {
@@ -23,17 +27,29 @@ int main(int argc, char** argv)
 	//imageOut = pImageProcessing->SketchFilter("C:\\Image_Test\\charlize-theron.jpg");
 	//imageOut = pImageProcessing->SketchGrayFilter("C:\\Image_Test\\charlize-theron.jpg");
 	//imageOut = pImageProcessing->RecursFilter("C:\\Image_Test\\charlize-theron.jpg");
-	  imageOut = pImageProcessing->GrayFilter("C:\\Image_Test\\charlize-theron.jpg");
+	  imageOut = pImageProcessing->GrayFilter("C:\\Image_Test\\Lenna.jpg");
 	
-	if (imageOut.data)
-	{
-		namedWindow("Display window", CV_WINDOW_AUTOSIZE);
-		imshow("Display window", imageOut);
-	}
+//	if (imageOut.data)
+//	{
+//		namedWindow("Display window", CV_WINDOW_AUTOSIZE);
+//		imshow("Display window", imageOut);
+//	}
+//
+//
+//	pImageProcessing->SaveImageProcessing("C:\\Image_Test\\charlize-theron_filter.jpg", imageOut);
 
-
-	pImageProcessing->SaveImageProcessing("C:\\Image_Test\\charlize-theron_filter.jpg", imageOut);
-
+	AllocConsole();
+	freopen("coinin$", "w", stdout);
+	
+	//use argv to get configuration urls
+	CFunctionalConf *functionalConf = new CFunctionalConf();
+	functionalConf->LoadConf("C:\\projects\\PhotoBooth\\photobooth_data\\functional.json");
+	json result = functionalConf->GetConfiguration();
+	
+	std::string s = result.dump(2);
+	printf("Functional Properties : %s",s);
+	
+	getchar();
 	waitKey(0);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

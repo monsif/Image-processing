@@ -28,11 +28,14 @@
 // -----------------------------------------------------------------------------
 // FICHIERS D'INCLUSION
 
+
+#include <iostream>
+#include <fstream>
+#include <string>
 #include "Config.h"
-
-// -----------------------------------------------------------------------------
-using namespace std;
-
+#include <functional>
+#include <sstream>
+// 
 
 // -----------------------------------------------------------------------------
 // CConfig::CConfig
@@ -49,6 +52,30 @@ using namespace std;
 // -----------------------------------------------------------------------------
 CConfig::CConfig()
 {
+	
+}
+
+bool CConfig::LoadConf(char url[])
+{
+	std::ifstream fichier(url);
+	
+	if (fichier)
+	{
+		fichier >> configuration;
+		return true;
+	}
+	else
+	{
+		return LoadDefaultConf();
+	}
+}
+
+bool CConfig::LoadDefaultConf() {
+	//load static data
+}
+
+json CConfig::GetConfiguration() {
+	return configuration;
 }
 
 // -----------------------------------------------------------------------------
@@ -67,3 +94,5 @@ CConfig::CConfig()
 CConfig::~CConfig()
 {
 }
+
+

@@ -24,19 +24,24 @@
 * 	            : 	    : 	       :	        :
 **************************************************************************** */
 // -----------------------------------------------------------------------------
-
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
 // -----------------------------------------------------------------------------
 // FICHIERS D'INCLUSION
-
+#include "json.hpp"
 
 // -----------------------------------------------------------------------------
+using json = Json::json;
 class CConfig
 {
+private:
+	json configuration;
 public:
 	CConfig();
+	bool LoadConf(char url[]);
+	bool LoadDefaultConf();
+	json GetConfiguration();
 	~CConfig();
 };
 

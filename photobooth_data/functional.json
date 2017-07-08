@@ -1,0 +1,20 @@
+{
+  "event_id": "1",
+  "event_name": "Salon du bourget",
+  "date": "22-09-2017",
+  "location": "Paris",
+  "duration": 3,
+  "max_photos":500,
+  "active_filters": ["balck_white","natural" ,"disrupted" ],
+  "papier_formats":["4/5","6/7" ,"1/10"],
+  "background_image":"url to background_image",
+  "screensaver" : {
+		"image" :"url to image",
+		"video":"url to video"
+				},
+  "social_share" : ["facebook","tweeter","instagram"],
+  "commercial" : {
+			"id": 542,
+			"name" : "Jean Le Blanc"
+			}  
+}

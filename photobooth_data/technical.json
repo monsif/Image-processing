@@ -1,0 +1,16 @@
+{
+  "printer_driver": "Dnp C++ driver",
+  "printer_version": "DNP RX1 HS",
+  "camera_driver": "Canon EOS API",
+  "camera_version": "Canon OES 1000D",
+  "last_updated": "22-09-2016",
+  "credentials": {
+		"usename" : "batch$owner",
+		"password" : "crypted password"
+		}
+  "services": {
+		"photo_cloud_service" : "url where to upload photos to server",
+		"statistic_service" : "",
+		"user_data_service" :""
+		}
+}

@@ -29,11 +29,8 @@
 // FICHIERS D'INCLUSION
 
 #include "FunctionalConf.h"
-
+#include "Config.h"
 // -----------------------------------------------------------------------------
-using namespace std;
-
-
 
 // -----------------------------------------------------------------------------
 // CFunctionalConf::CFunctionalConf
