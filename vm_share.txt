@@ -1,0 +1,25 @@
+connect( this,SIGNAL( clicked( bool ) ),this,SLOT( FctToggled( bool ) ) );
+
+void QToggleButton::FctToggled( bool checked )
+{
+	if( m_iAddress == 0 )
+		return;
+	if( checked == true )
+	{
+		setText( m_qTextIn );
+		//if( m_pBButton )
+		//	m_pBButton->SetEnabled( true );
+		__ModifyMem( &m_iAddress,FORMAT_WORD,(unsigned int) ( 1 << m_iId ) );
+
+
+	}
+	else
+	{
+		setText( m_qTextOut );
+		//if( m_pBButton )
+		//	m_pBButton->SetEnabled( false );
+		__ModifyMem( &m_iAddress,FORMAT_WORD,(unsigned int) ( 1 << m_iId ) );
+
+	}
+
+}
