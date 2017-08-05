@@ -1,29 +1,3 @@
-/*******************************************************************************
-* Config.h : le fichier header de la classe CConfig
-*******************************************************************************
-*
-*
-*
-*******************************************************************************
-* author	: Amine ELKHARROUBI
-* date		:
-* version	:
-*******************************************************************************
-*  LISTE DES CLASSES DU MODULE :
-*
-*  Class       : CConfig
-*  Description :
-*
-*  LISTE DES FONCTIONS DU MODULE :
-*
-*******************************************************************************
-* MODIFICATIONS
-* -----------------------------------------------------------------------------
-* Date			: Ver	: Auteur	: Ident		: Commentaires
-* -----------------------------------------------------------------------------
-* 	            : 	    : 	       :	        :
-**************************************************************************** */
-// -----------------------------------------------------------------------------
 #ifndef CONFIG_H_
 #define CONFIG_H_
 
@@ -37,10 +11,11 @@ class CConfig
 {
 private:
 	json configuration;
+protected :
+	void LoadConf(char url[]);
+	void LoadDefaultConf();
 public:
 	CConfig();
-	bool LoadConf(char url[]);
-	bool LoadDefaultConf();
 	json GetConfiguration();
 	~CConfig();
 };

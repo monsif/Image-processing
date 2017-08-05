@@ -1,23 +1,37 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>QFormWindow</class>
- <widget class="QWidget" name="QFormWindow" >
-  <property name="objectName" >
-   <string notr="true">QFormWindow</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QWidget" name="QFormWindow">
+  <property name="geometry">
    <rect>
-	<x>0</x>
-	<y>0</y>
-	<width>400</width>
-	<height>300</height>
+    <x>0</x>
+    <y>0</y>
+    <width>1107</width>
+    <height>891</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>QFormWindow</string>
-  </property>  
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_4"/>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout"/>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2"/>
+   </item>
+  </layout>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
-</UI>
+ <slots>
+  <slot>handlebutton()</slot>
+ </slots>
+</ui>

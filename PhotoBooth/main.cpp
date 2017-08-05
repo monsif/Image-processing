@@ -9,17 +9,17 @@
 #include "ImageProcessing.h"
 #include "FunctionalConf.h"
 #include "TechnicalConf.h"
-#include "json.hpp"
+#include <string>
 using namespace cv;
 using namespace std;
-using json = nlohmann::json;
+//using json = nlohmann::json;
 
-int main(int argc, char** argv)
-{
-	Mat imageOut;
-	CImageProcessing *pImageProcessing = NULL;
+//int main(int argc, char** argv)
+//{
+	//Mat imageOut;
+	//CImageProcessing *pImageProcessing = NULL;
 
-	pImageProcessing = new CImageProcessing();
+	//pImageProcessing = new CImageProcessing();
 
 	//imageOut = pImageProcessing->EnhanceFilter("C:\\Image_Test\\charlize-theron.jpg");
 	//imageOut = pImageProcessing->StylizationFilter("C:\\Image_Test\\charlize-theron.jpg");
@@ -27,8 +27,8 @@ int main(int argc, char** argv)
 	//imageOut = pImageProcessing->SketchFilter("C:\\Image_Test\\charlize-theron.jpg");
 	//imageOut = pImageProcessing->SketchGrayFilter("C:\\Image_Test\\charlize-theron.jpg");
 	//imageOut = pImageProcessing->RecursFilter("C:\\Image_Test\\charlize-theron.jpg");
-	  imageOut = pImageProcessing->GrayFilter("C:\\Image_Test\\Lenna.jpg");
-	
+	 // imageOut = pImageProcessing->GrayFilter("C:\\Image_Test\\Lenna.jpg");
+
 //	if (imageOut.data)
 //	{
 //		namedWindow("Display window", CV_WINDOW_AUTOSIZE);
@@ -38,21 +38,22 @@ int main(int argc, char** argv)
 //
 //	pImageProcessing->SaveImageProcessing("C:\\Image_Test\\charlize-theron_filter.jpg", imageOut);
 
-	AllocConsole();
-	freopen("conin$", "w", stdout);
-	freopen("conout$", "w", stdout);
-	freopen("conout$", "w", stderr);
+//	AllocConsole();
+//	freopen("conin$", "w", stdout);
+//	freopen("conout$", "w", stdout);
+//	freopen("conout$", "w", stderr);
 	
 	//use argv to get configuration urls
-	CFunctionalConf *functionalConf = new CFunctionalConf();
-	functionalConf->LoadConf("C:\\projects\\PhotoBooth\\photobooth_data\\functional.json");
-	json result = functionalConf->GetConfiguration();
-	std::cout << result.dump(2);
-
 	
-	getchar();
-	waitKey(0);
-}
+
+	//std::cout << "Hello " << '\n';
+	//std::cout << "creadentials? " << technicalConf->getCredentials() << '\n';
+	//std::cout << "services? " << technicalConf->getServices() << '\n';
+	//std::cout << "Fin";
+
+//	getchar();
+//	waitKey(0);
+//}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////  Fin Test CImageProcessing      ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,16 +62,20 @@ int main(int argc, char** argv)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////  Test QT      ///////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//#include "Gui.h"
-//#include <QtWidgets/QApplication>
-//
-//int main(int argc, char *argv[])
-//{
-//	QApplication a(argc, argv);
-//	QGui w;
-//	w.show();
-//	return a.exec();
-//}
+#include "Gui.h"
+#include <QtWidgets/QApplication>
+#include "FormWindow.h"
+
+int main(int argc, char *argv[])
+{
+	QApplication app(argc, argv);
+	QFormWindow w;
+	CTechnicalConf *technicalConf = new CTechnicalConf();
+	technicalConf->init("C:\\projects\\PhotoBooth\\photobooth_data\\technical.json");
+	w.init(technicalConf->getFormView(), "C:\\projects\\PhotoBooth\\photobooth_data\\style-coffee.qss");
+	w.show();
+	return app.exec();
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////// Fin Test QT   ///////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

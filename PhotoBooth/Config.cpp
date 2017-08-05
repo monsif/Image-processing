@@ -1,34 +1,3 @@
-/*******************************************************************************
-* Config.cpp : le fichier header de la classe CConfig
-*******************************************************************************
-*
-*
-*
-*******************************************************************************
-* author	: Amine ELKHARROUBI
-* date		:
-* version	:
-*******************************************************************************
-*  LISTE DES CLASSES DU MODULE :
-*
-*  Class       : CConfig
-*  Description :
-*
-*  LISTE DES FONCTIONS DU MODULE :
-*
-*******************************************************************************
-* MODIFICATIONS
-* -----------------------------------------------------------------------------
-* Date			: Ver	: Auteur	: Ident		: Commentaires
-* -----------------------------------------------------------------------------
-* 	            : 	    : 	       :	        :
-**************************************************************************** */
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
-// FICHIERS D'INCLUSION
-
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -55,24 +24,23 @@ CConfig::CConfig()
 	
 }
 
-bool CConfig::LoadConf(char url[])
+void CConfig::LoadConf(char url[])
 {
 	std::ifstream fichier(url);
 	
 	if (fichier)
 	{
 		fichier >> configuration;
-		return true;
 	}
 	else
 	{
-		return LoadDefaultConf();
+	 LoadDefaultConf();
 	}
 }
 
-bool CConfig::LoadDefaultConf() {
+void CConfig::LoadDefaultConf() {
 	//load static data
-	return false;
+	
 }
 
 json CConfig::GetConfiguration() {

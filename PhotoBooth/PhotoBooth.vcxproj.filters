@@ -74,12 +74,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_Gui.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_FormWindow.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_FormWindow.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="TakePhotoWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -146,6 +140,21 @@
     <ClCompile Include="FactoryPhotoBoothPrinter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_FormWindow.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_FormWindow.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="photoprintformat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_photoprintformat.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_photoprintformat.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="photobooth.h">
@@ -182,6 +191,12 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="FormWindow.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="photoprintformat.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="photoprintformat.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -246,14 +261,17 @@
     <ClInclude Include="GeneratedFiles\ui_StandbyWindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_FormWindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="PhotoBoothHeader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FactoryPhotoBoothPrinter.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_FormWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_photoprintformat.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
