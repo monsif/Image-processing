@@ -130,10 +130,9 @@ color:white;
 }
 
 *[class=main]{
-border-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/cocacola.jpg") 0 0 0 0 stretch stretch;
+background-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/working.png") 0 0 0 0 stretch stretch;
 }
 
 MainWindow {
-font: 11pt "Times New Roman";
-border-style:trasparent;
+background-color:red;
 }

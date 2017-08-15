@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::init()
 {
 	ui.setupUi(this);
-	ui.MYFrame->setProperty("class", "main");
+	ui.frame->setProperty("class", "main");
 	technicalConf = new CTechnicalConf();
 	technicalConf->init("C:\\projects\\PhotoBooth\\photobooth_data\\technical.json");
 	
@@ -22,7 +22,7 @@ void MainWindow::init()
 	
 	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
 	
-	ui.verticalLayout->addWidget(abstractView);
+	ui.right_layout->addWidget(abstractView);
 
 	yPos = abstractView->x() - 1;
 	hidingPoint = 0 - yPos - abstractView->size().height() + 1;
@@ -69,7 +69,9 @@ void MainWindow::update()
 	{
 		abstractView->hide();
 	//	formView = nextView;
-		ui.verticalLayout->addWidget(nextView);
+		ui.right_layout->addWidget(nextView);
+		//ui.left_layout->addWidget(nextView);
+		//ui.center_layout->addWidget(nextView);
 		tmr->stop();
 	}
 }
