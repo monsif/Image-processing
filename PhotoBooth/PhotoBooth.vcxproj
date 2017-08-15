@@ -323,13 +323,6 @@
     <ClInclude Include="DNPRX1.h" />
     <ClInclude Include="FactoryCamera.h" />
     <ClInclude Include="FactoryPhotoBoothPrinter.h" />
-    <ClInclude Include="GeneratedFiles\ui_FormWindow.h" />
-    <ClInclude Include="GeneratedFiles\ui_mainwindow.h" />
-    <ClInclude Include="GeneratedFiles\ui_PhotoBoothMainWindow.h" />
-    <ClInclude Include="GeneratedFiles\ui_photoprintformat.h" />
-    <ClInclude Include="GeneratedFiles\ui_StandbyWindow.h" />
-    <ClInclude Include="GeneratedFiles\ui_StartWindow.h" />
-    <ClInclude Include="GeneratedFiles\ui_TakePhotoWindow.h" />
     <CustomBuild Include="FormWindow.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing FormWindow.h...</Message>
@@ -349,7 +342,6 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB  "-I$(OPENCV_DIR)\build\include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets"</Command>
     </CustomBuild>
     <ClInclude Include="FunctionalConf.h" />
-    <ClInclude Include="GeneratedFiles\ui_photobooth.h" />
     <CustomBuild Include="Gui.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing Gui.h...</Message>
@@ -404,6 +396,14 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_UITOOLS_LIB -DQT_WIDGETS_LIB "-I$(OPENCV_DIR)\build\include" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtUiTools" "-I$(QTDIR)\include\QtWidgets"</Command>
     </CustomBuild>
+    <ClInclude Include="GeneratedFiles\ui_FormWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_mainwindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_photobooth.h" />
+    <ClInclude Include="GeneratedFiles\ui_PhotoBoothMainWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_photoprintformat.h" />
+    <ClInclude Include="GeneratedFiles\ui_StandbyWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_StartWindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_TakePhotoWindow.h" />
     <ClInclude Include="PhotoBoothHeader.h" />
     <ClInclude Include="ImageProcessing.h" />
     <ClInclude Include="Liste.h" />

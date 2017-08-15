@@ -11,6 +11,7 @@
 #include <FormWindow.h>
 #include <TakePhotoWindow.h>
 #include <AbstractView.h>
+#include <PhotoPrintFormat.h>
 #include <QGraphicsOpacityEffect>
 
 class MainWindow : public QWidget

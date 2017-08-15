@@ -43,7 +43,8 @@
    "FirstView" : "FormWindow",
    "next" : {
    "FormWindow" : "TakePhotoWindow",
-   "TakePhotoWindow" : "FormWindow" 
+   "TakePhotoWindow" : "PhotoPrintFormatView",
+   "PhotoPrintFormatView" : "FormWindow"
    },
    "languages":{
       "FR":{

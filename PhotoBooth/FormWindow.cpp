@@ -91,8 +91,8 @@ void QFormWindow::initFields()
 	job->lineEdit()->setText(QString::fromStdString(job_p));
 	job->lineEdit()->setReadOnly(true);
 	job->setVisible(job_enabled);
-	ui.verticalLayout->addWidget(job);
-	ui.verticalLayout->addWidget(jobError);
+	ui.verticalLayout_3->addWidget(job);
+	ui.verticalLayout_3->addWidget(jobError);
 	/////////////DATE FIELDS///////////
 	//setupFieldsLineEdit(birthdayError, birthday, view_conf["input_age"]);
 	std::string error_age = view_conf["input_age"]["error"].get<std::string>();
@@ -120,13 +120,13 @@ void QFormWindow::initFields()
 	birthdayLayout->addWidget(day);
 	birthdayLayout->addWidget(month);
 	birthdayLayout->addWidget(year);
-	ui.verticalLayout->addLayout(birthdayLayout);
-	ui.verticalLayout->addWidget(birthdayError);
+	ui.verticalLayout_3->addLayout(birthdayLayout);
+	ui.verticalLayout_3->addWidget(birthdayError);
 	/////////////PUSH BUTTONS///////////
 	std::string label_b = view_conf["button_next"]["label"].get<std::string>();
 	nextButton = new QPushButton(this);
 	nextButton->setText(QString::fromStdString(label_b));
-	ui.verticalLayout->addWidget(nextButton);
+	ui.verticalLayout_3->addWidget(nextButton);
 
 	////////////Mandatory fields///////////
 	email_ = view_conf["fields"]["input_email"]["mandatory"].get<bool>();
@@ -166,8 +166,8 @@ void QFormWindow::setupFieldsLineEdit(QLabel* label, QLineEdit * lineEdit, std::
 	label->setVisible(false);
 	lineEdit->setVisible(enabled);
 
-	ui.verticalLayout->addWidget(lineEdit);
-	ui.verticalLayout->addWidget(label);
+	ui.verticalLayout_3->addWidget(lineEdit);
+	ui.verticalLayout_3->addWidget(label);
 }
 
 /////////////////SLOTS/////////////////

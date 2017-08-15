@@ -1,11 +1,16 @@
 #include "photoprintformat.h"
 
 PhotoPrintFormat::PhotoPrintFormat(QWidget *parent)
-	:QWidget(parent)
+	:AbstractView(parent)
 {
-//	factory = factory_;
-//	configuration = configuration_;
-//	ui.setupUi(this);
+	ui.setupUi(this);
+	connect(ui.multiple, &QPushButton::clicked, this, &PhotoPrintFormat::handleButton);
+	connect(ui.single, &QPushButton::clicked, this, &PhotoPrintFormat::handleButton);
+}
+
+void PhotoPrintFormat::handleButton()
+{
+	emit(next("PhotoPrintFormatView"));
 }
 
 PhotoPrintFormat::~PhotoPrintFormat()

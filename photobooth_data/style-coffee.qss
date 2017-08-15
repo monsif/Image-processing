@@ -1,6 +1,6 @@
 .QWidget {
    /*background-color: beige;   */
-   background-image: url(Resources/Lenna.jpg);
+
 }
 
 /* Nice Windows-XP-style password character. */
@@ -134,5 +134,5 @@ background-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/working.png")
 }
 
 MainWindow {
-background-color:red;
+background-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/working.png") 0 0 0 0 stretch stretch;
 }

@@ -22,7 +22,7 @@ void MainWindow::init()
 	
 	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
 	
-	ui.right_layout->addWidget(abstractView);
+	ui.mainFrameLayout->addWidget(abstractView);
 
 	eff = new QGraphicsOpacityEffect(this);
 	eff->setOpacity(1.0);
@@ -67,8 +67,8 @@ AbstractView* MainWindow::getNextView(std::string nextView)
 		return new QFormWindow(technicalConf->getFormView(),this);
 	}
 
-	if (nextView.compare("PhotoPrintFormat") == 0) {
-		//MainWindow::nextView = new PhotoPrintFormat();
+	if (nextView.compare("PhotoPrintFormatView") == 0) {
+		return new PhotoPrintFormat(this);
 	}
 }
 
@@ -90,7 +90,7 @@ void MainWindow::update()
 	//	tmr->stop();
 	//}
 	abstractView->hide();
-	ui.right_layout->addWidget(nextView);
+	ui.mainFrameLayout->addWidget(nextView);
 	abstractView = nextView;
 	nextView = nullptr;
 	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
