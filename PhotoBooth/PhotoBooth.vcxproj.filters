@@ -315,9 +315,6 @@
     <ClInclude Include="GeneratedFiles\ui_PhotoBoothMainWindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_photoprintformat.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_StandbyWindow.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
@@ -325,6 +322,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_TakePhotoWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_photoprintformat.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
