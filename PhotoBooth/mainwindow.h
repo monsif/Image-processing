@@ -11,6 +11,7 @@
 #include <FormWindow.h>
 #include <TakePhotoWindow.h>
 #include <AbstractView.h>
+#include <QGraphicsOpacityEffect>
 
 class MainWindow : public QWidget
 {
@@ -32,8 +33,10 @@ private:
 	ViewFactory *widgetFactory;
 	AbstractView *abstractView,*nextView;
 	void loadStyleSheet(QString cssFilePath);
+	AbstractView* MainWindow::getNextView(std::string nextView);
+	QGraphicsOpacityEffect *eff;
+	QPropertyAnimation *anim;
 	//handlePhotoView -> print/share photo
-	//AbstractView *standByView, *printFormatView, *takePhotoView, *handlePhotoView, *waintingToPrintView;
 };
 
 #endif // MAINWINDOW_H

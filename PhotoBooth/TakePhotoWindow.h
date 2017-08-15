@@ -16,8 +16,8 @@ public:
 	QTakePhotoWindow(QWidget *parent);
 	~QTakePhotoWindow();
 
-signals:
-	void next(std::string next);
+private slots:
+	void handleButton();
 
 private:
 	Ui::QTakePhotoWindow ui;

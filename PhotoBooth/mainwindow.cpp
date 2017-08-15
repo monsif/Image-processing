@@ -24,10 +24,17 @@ void MainWindow::init()
 	
 	ui.right_layout->addWidget(abstractView);
 
-	yPos = abstractView->x() - 1;
-	hidingPoint = 0 - yPos - abstractView->size().height() + 1;
-	tmr = new QTimer();
-	connect(tmr, SIGNAL(timeout()), this, SLOT(update()));
+	eff = new QGraphicsOpacityEffect(this);
+	eff->setOpacity(1.0);
+	anim = new QPropertyAnimation(eff, "opacity");
+	anim->setDuration(700);
+	anim->setStartValue(1);
+	anim->setEndValue(0);
+	anim->setEasingCurve(QEasingCurve::OutBack);
+	abstractView->setGraphicsEffect(eff);
+	connect(anim, SIGNAL(finished()), this, SLOT(update()));
+	//tmr = new QTimer();
+	//connect(tmr, SIGNAL(timeout()), this, SLOT(update()));
 }
 
 void MainWindow::loadStyleSheet(QString cssFilePath)
@@ -40,40 +47,55 @@ void MainWindow::loadStyleSheet(QString cssFilePath)
 }
 
 void MainWindow::handleNextView(std::string nextView)
+{	
+	//yPos = abstractView->x() - 1;
+	//hidingPoint = 0 - yPos - abstractView->size().height() + 1;
+	MainWindow::nextView = getNextView(nextView);
+	//tmr->start();
+	anim->start();
+}
+
+AbstractView* MainWindow::getNextView(std::string nextView)
 {
 	nextView = technicalConf->GetConfiguration()["next"][nextView].get<std::string>();
-	
-	if (nextView.compare("TakePhotoWindow")==0) {
-		MainWindow::nextView = new QTakePhotoWindow(this);
+
+	if (nextView.compare("TakePhotoWindow") == 0) {
+		return new QTakePhotoWindow(this);
 	}
-	
-	if (nextView.compare("FormWindow")==0) {
-	////	MainWindow::nextView = formView;
+
+	if (nextView.compare("FormWindow") == 0) {
+		return new QFormWindow(technicalConf->getFormView(),this);
 	}
-	
-	if (nextView.compare("PhotoPrintFormat")==0) {
+
+	if (nextView.compare("PhotoPrintFormat") == 0) {
 		//MainWindow::nextView = new PhotoPrintFormat();
 	}
-	
-	tmr->start();
 }
 
 void MainWindow::update()
 {
-	if (yPos > hidingPoint)
-	{
-		abstractView->move(yPos, abstractView->y());
-		yPos = yPos-20;
-	}
-	else
-	{
-		abstractView->hide();
-	//	formView = nextView;
-		ui.right_layout->addWidget(nextView);
-		//ui.left_layout->addWidget(nextView);
-		//ui.center_layout->addWidget(nextView);
-		tmr->stop();
-	}
+	//if (yPos > hidingPoint)
+	//{
+	//	abstractView->move(yPos, abstractView->y());
+	//	yPos = yPos-20;
+	//}
+	//else
+	//{
+	//	abstractView->hide();
+	//	ui.right_layout->addWidget(nextView);
+	//	abstractView = nextView;
+	//	nextView = nullptr;
+	//	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
+	//	abstractView->setGraphicsEffect(eff);
+	//	tmr->stop();
+	//}
+	abstractView->hide();
+	ui.right_layout->addWidget(nextView);
+	abstractView = nextView;
+	nextView = nullptr;
+	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
+	abstractView->setGraphicsEffect(eff);
+	eff->setOpacity(1.0);
 }
 
 MainWindow::~MainWindow()
