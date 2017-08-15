@@ -111,7 +111,7 @@ QComboBox::down-arrow:on {
 }
 
 /* A QLabel is a QFrame ... */
-QLabel{
+*[class=error_label]{
     background: none;
 	font: 20px aria, sans-serif;
 	color:red;
@@ -130,9 +130,15 @@ color:white;
 }
 
 *[class=main]{
-background-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/working.png") 0 0 0 0 stretch stretch;
+border-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/working.png") 0 0 0 0 stretch stretch;
+}
+*[class=photoText]{
+qproperty-alignment:AlignCenter;
+color:black;
 }
 
 MainWindow {
-background-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/working.png") 0 0 0 0 stretch stretch;
+background-position: center;
+font: 11pt "Times New Roman";
+border-style:trasparent;
 }

@@ -60,11 +60,17 @@ void QFormWindow::initFields()
 
 	//////////ERROR LABELS////////////
 	nameError = new QLabel(this);
+	nameError->setProperty("class", "error_label");
 	emailError = new QLabel(this);
+	emailError->setProperty("class", "error_label");
 	phoneError = new QLabel(this);
+	phoneError->setProperty("class", "error_label");
 	adressError = new QLabel(this);
+	adressError->setProperty("class", "error_label");
 	jobError = new QLabel(this);
+	jobError->setProperty("class", "error_label");
 	birthdayError = new QLabel(this);
+	birthdayError->setProperty("class", "error_label");
 	birthdayLabel = new QLabel(this);
 	job = new QComboBox(this);
 	lineEdit = new MyLineEdit(this);

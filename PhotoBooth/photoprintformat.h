@@ -4,13 +4,16 @@
 #include "ui_photoprintformat.h"
 #include "AbstractView.h"
 #include "qpushbutton.h"
+#include <QFontDatabase>
+#include "json.hpp"
+using json = nlohmann::json;
 
 class PhotoPrintFormat : public AbstractView
 {
 	Q_OBJECT
 
 public:
-	PhotoPrintFormat(QWidget *parent=0);
+	PhotoPrintFormat(json conf, QWidget *parent=0);
 	~PhotoPrintFormat();
 
 private slots:

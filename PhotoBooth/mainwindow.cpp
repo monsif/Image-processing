@@ -16,8 +16,6 @@ void MainWindow::init()
 	
 	loadStyleSheet("C:\\projects\\PhotoBooth\\photobooth_data\\style-coffee.qss");
 	
-	//setStyleSheet("MainWindow{background-image: url(C:/projects/PhotoBooth/PhotoBooth/Resources/335309.png);}");
-
 	abstractView = new QFormWindow(technicalConf->getFormView(),this);
 	
 	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
@@ -43,7 +41,6 @@ void MainWindow::loadStyleSheet(QString cssFilePath)
 	styleFile.open(QFile::ReadOnly);
 	QString style(styleFile.readAll());
 	setStyleSheet(style);
-
 }
 
 void MainWindow::handleNextView(std::string nextView)
@@ -68,7 +65,7 @@ AbstractView* MainWindow::getNextView(std::string nextView)
 	}
 
 	if (nextView.compare("PhotoPrintFormatView") == 0) {
-		return new PhotoPrintFormat(this);
+		return new PhotoPrintFormat(technicalConf->GetConfiguration(),this);
 	}
 }
 
@@ -90,9 +87,10 @@ void MainWindow::update()
 	//	tmr->stop();
 	//}
 	abstractView->hide();
-	ui.mainFrameLayout->addWidget(nextView);
+	//delete abstractView;
 	abstractView = nextView;
 	nextView = nullptr;
+	ui.mainFrameLayout->addWidget(abstractView);
 	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
 	abstractView->setGraphicsEffect(eff);
 	eff->setOpacity(1.0);

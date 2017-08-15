@@ -15,6 +15,19 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
+    <spacer name="horizontalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <spacer name="horizontalSpacer_3">
@@ -55,7 +68,9 @@ background: rgb(230, 230, 230,50%);</string>
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-image:url(:/newPrefix/placeholder_portrait.jpg)</string>
+             <string notr="true">background-image:url(C:/projects/PhotoBooth/PhotoBooth/Resources/placeholder_portrait.jpg);
+background-repeat: no-repeat;
+background-position: center;</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -71,7 +86,9 @@ background: rgb(230, 230, 230,50%);</string>
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-image: url(:/newPrefix/placeholder_portrait.jpg);</string>
+             <string notr="true">background-image:url(C:/projects/PhotoBooth/PhotoBooth/Resources/placeholder_portrait.jpg);
+background-repeat: no-repeat;
+background-position: center;</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -79,7 +96,6 @@ background: rgb(230, 230, 230,50%);</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <zorder>frame_3</zorder>
            </widget>
           </item>
          </layout>
@@ -90,7 +106,9 @@ background: rgb(230, 230, 230,50%);</string>
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-image:url(:/newPrefix/placeholder_landscape.jpg)</string>
+           <string notr="true">background-image:url(C:/projects/PhotoBooth/PhotoBooth/Resources/placeholder_landscape.jpg);
+background-repeat: no-repeat;
+background-position: center;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -98,7 +116,22 @@ background: rgb(230, 230, 230,50%);</string>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <zorder>frame_3</zorder>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>70</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Some Text</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -148,14 +181,31 @@ background: rgb(230, 230, 230,50%);</string>
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-image:url(:/newPrefix/placeholder_portrit_big.jpg);
-background-repeat: no-repeat;</string>
+           <string notr="true">background-image:url(C:/projects/PhotoBooth/PhotoBooth/Resources/placeholder_portrit_big.jpg);
+background-repeat: no-repeat;
+background-position: center;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>70</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>Some Text</string>
           </property>
          </widget>
         </item>
@@ -167,9 +217,6 @@ background-repeat: no-repeat;</string>
          </widget>
         </item>
        </layout>
-       <zorder>frame_5</zorder>
-       <zorder>single</zorder>
-       <zorder>horizontalSpacer_9</zorder>
       </widget>
      </item>
      <item>

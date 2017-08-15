@@ -40,11 +40,17 @@
          "enabled":true
       }
    },
+   "photo_text" : {
+   "value" : "Joyeux Anniversaire",
+   "italic" : false,
+   "weight" : 800,
+    "point_size" : 42
+   },
    "FirstView" : "FormWindow",
    "next" : {
-   "FormWindow" : "TakePhotoWindow",
-   "TakePhotoWindow" : "PhotoPrintFormatView",
-   "PhotoPrintFormatView" : "FormWindow"
+   "FormWindow" : "PhotoPrintFormatView",
+   "TakePhotoWindow" : "FormWindow",
+   "PhotoPrintFormatView" : "TakePhotoWindow"
    },
    "languages":{
       "FR":{
