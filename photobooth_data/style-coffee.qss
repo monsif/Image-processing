@@ -1,5 +1,6 @@
 .QWidget {
-   background-color: beige;   
+   /*background-color: beige;   */
+   background-image: url(Resources/Lenna.jpg);
 }
 
 /* Nice Windows-XP-style password character. */
@@ -44,18 +45,8 @@ QDateEdit{
 	text-indent: 0;
 }
 
-QLabel {
-font: bold;
-color:red;
-margin:	0;
-padding: 0;
-text-align:center;
-}
 
-/* We reserve 1 pixel space in padding. When we get the focus,
-   we kill the padding and enlarge the border. This makes the items
-   glow. */
-QLineEdit, QFrame {
+QLineEdit {
     border-width: 2px;
     padding: 1px;
     border-style: solid;
@@ -69,22 +60,80 @@ QLineEdit, QFrame {
 }
 
 /* As mentioned above, eliminate the padding and increase the border. */
-QLineEdit:focus, QFrame:focus {
+QLineEdit:focus,QDateEdit:focus,QComboBox:focus {
     border-width: 3px;
     padding: 0px;
+	border-color: #4ebdef;
+}
+
+QComboBox {
+    border: 2px solid gray;
+    border-radius: 3px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+	width:80%;
+	font: 20px;
+	background-color:white;
+}
+
+QComboBox:on { 
+    padding-top: 3px;
+    padding-left: 4px;
+	width:80%;
+	border-color: #4ebdef;
+	background-color:white;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+	subcontrol-color:white;
+    width: 15px;
+	background-color:white;
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid; 
+    border-top-right-radius: 3px; 
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox QAbstractItemView{
+border: 2px solid #4ebdef;
+background-color:white;
+selection-background-color: lightgray;
+selection-border-color: none;
+border-top-color:none;
+}
+
+QComboBox::down-arrow:on { 
+    top: 1px;
+    left: 1px;
 }
 
 /* A QLabel is a QFrame ... */
-QLabel {
-    border: none;
-    padding: 0;
-	margin-top:-20px;
+QLabel{
     background: none;
+	font: 20px aria, sans-serif;
+	color:red;
+	border-width: 2px;
+    padding: 1px;
+    border-style: solid;
+    border-radius: 5px;
+	font: 20px;
+	margin:	0;
 	width:80%;
+	text-indent: 0;
+}
+*[class=birthday_label]{
+font: 20px aria, sans-serif;
+color:white;
 }
 
-QFormWindow,FieldsForm {
-background-color: #141E30;  /* fallback for old browsers */
+*[class=main]{
+border-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/cocacola.jpg") 0 0 0 0 stretch stretch;
+}
+
+MainWindow {
 font: 11pt "Times New Roman";
 border-style:trasparent;
 }

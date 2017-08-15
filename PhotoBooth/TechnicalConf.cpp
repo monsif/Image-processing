@@ -1,25 +1,5 @@
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
-// FICHIERS D'INCLUSION
-
 #include "TechnicalConf.h"
 
-// -----------------------------------------------------------------------------
-
-
-// -----------------------------------------------------------------------------
-// CTechnicalConf::CTechnicalConf
-/////** \brief Le destructeur de la classe CTechnicalConf.
-/*
-* @param[char* ]
-* @exception
-* @return
-*
-* @details Traitement :
-*
-*
-*/
 // -----------------------------------------------------------------------------
 CTechnicalConf::CTechnicalConf()
 {
@@ -119,6 +99,7 @@ void CTechnicalConf::findViewsLanguage()
 	json views = GetConfiguration()["languages"][active_language];
 	format_view = views["format_view"];
 	form_view = views["form_view"];
+	form_view["fields"] = GetConfiguration()["fields"];
 	print_view = views["print_view"];
 	take_photo_view = views["take_photo_view"];
 }

@@ -1,7 +1,6 @@
 #ifndef PHOTOPRINTFORMAT_H
 #define PHOTOPRINTFORMAT_H
 
-#include <QWidget>
 #include "ui_photoprintformat.h"
 
 class PhotoPrintFormat : public QWidget
@@ -9,7 +8,7 @@ class PhotoPrintFormat : public QWidget
 	Q_OBJECT
 
 public:
-	PhotoPrintFormat(QWidget *parent = 0);
+	PhotoPrintFormat(QWidget *parent=0);
 	~PhotoPrintFormat();
 
 private:

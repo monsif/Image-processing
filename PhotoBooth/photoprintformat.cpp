@@ -1,9 +1,11 @@
 #include "photoprintformat.h"
 
 PhotoPrintFormat::PhotoPrintFormat(QWidget *parent)
-	: QWidget(parent)
+	:QWidget(parent)
 {
-	ui.setupUi(this);
+//	factory = factory_;
+//	configuration = configuration_;
+//	ui.setupUi(this);
 }
 
 PhotoPrintFormat::~PhotoPrintFormat()

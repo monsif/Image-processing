@@ -1,9 +1,9 @@
 #include "FormWindow.h"
-#include <qdebug.h> 
 
-QFormWindow::QFormWindow(QWidget *parent): QWidget(parent)
+QFormWindow::QFormWindow(json conf,QWidget *parent):AbstractView(parent)
 {
-	
+	init(conf);
+	ui.setupUi(this);
 }
 
 QFormWindow::~QFormWindow()
@@ -11,19 +11,22 @@ QFormWindow::~QFormWindow()
 
 }
 
-void QFormWindow::init(json view_conf, QString cssFilePath)
+void QFormWindow::init(json view_conf)
 {
 	QFormWindow::view_conf = view_conf;
 	ui.setupUi(this);
 	initFields();
 	initValidators();
-	loadStyleSheet(cssFilePath);
-	connect(nextButton, SIGNAL(released()), this, SLOT(handleButton()));
-	connect(nameLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onNameTextChanged);
-	connect(phoneLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onPhoneTextChanged);
-	connect(jobLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onJobTextChanged);
-	connect(emailLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onEmailTextChanged);
-	connect(adressLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onAdressTextChanged);
+	QWidget::connect(nextButton, &QPushButton::released, this, &QFormWindow::handleButton);
+	QWidget::connect(nameLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onNameTextChanged);
+	QWidget::connect(phoneLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onPhoneTextChanged);
+	QWidget::connect(emailLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onEmailTextChanged);
+	QWidget::connect(adressLineEdit, &QLineEdit::textEdited, this, &QFormWindow::onAdressTextChanged);
+	QWidget::connect(lineEdit, &MyLineEdit::focussed, this, &QFormWindow::handleMyLineEdit);
+	QWidget::connect(day, &QLineEdit::textChanged, this, &QFormWindow::handleDayEdit);
+	QWidget::connect(month, &QLineEdit::textChanged, this, &QFormWindow::handleMonthEdit);
+	QWidget::connect(year, &QLineEdit::textChanged, this, &QFormWindow::handleYearEdit);
+	QWidget::connect(nextButton, &QPushButton::pressed, this, &QFormWindow::handleNextButton);
 
 }
 
@@ -42,11 +45,18 @@ void QFormWindow::initFields()
 	nameLineEdit = new QLineEdit(this);
 	emailLineEdit = new QLineEdit(this);
 	adressLineEdit = new QLineEdit(this);
-	jobLineEdit = new QLineEdit(this);
-	jobLineEdit->setText("Change this to Drop down list");
-	birthday = new QDateEdit(this);
+	day = new MyLineEdit(this);
+	day->setMaxLength(2);
+	day->setInputMethodHints(Qt::ImhDigitsOnly);
+	month = new MyLineEdit(this);
+	month->setMaxLength(2);
+	month->setInputMethodHints(Qt::ImhDigitsOnly);
+	year = new MyLineEdit(this);
+	year->setMaxLength(4);
+	year->setInputMethodHints(Qt::ImhDigitsOnly);
 	phoneLineEdit = new QLineEdit(this);
 	phoneLineEdit->setInputMethodHints(Qt::ImhDigitsOnly);
+
 
 	//////////ERROR LABELS////////////
 	nameError = new QLabel(this);
@@ -55,28 +65,76 @@ void QFormWindow::initFields()
 	adressError = new QLabel(this);
 	jobError = new QLabel(this);
 	birthdayError = new QLabel(this);
+	birthdayLabel = new QLabel(this);
+	job = new QComboBox(this);
+	lineEdit = new MyLineEdit(this);
+	birthdayLayout = new QHBoxLayout(this);
 
 	/////////////LOAD FIELD PROPERTIES//////////
-	setupFieldsLineEdit(nameError, nameLineEdit, view_conf["input_name"]);
-	setupFieldsLineEdit(emailError, emailLineEdit, view_conf["input_email"]);
-	setupFieldsLineEdit(phoneError, phoneLineEdit, view_conf["input_phone"]);
-	setupFieldsLineEdit(adressError, adressLineEdit, view_conf["input_adress"]);
-	setupFieldsLineEdit(jobError, jobLineEdit, view_conf["input_job"]);
-
+	setupFieldsLineEdit(nameError, nameLineEdit, "input_name");
+	setupFieldsLineEdit(emailError, emailLineEdit, "input_email");
+	setupFieldsLineEdit(phoneError, phoneLineEdit, "input_phone");
+	setupFieldsLineEdit(adressError, adressLineEdit, "input_adress");
+	//////////////ComboBox Jobs List////////////
+	bool job_enabled = view_conf["fields"]["input_job"]["enabled"].get<bool>();
+	std::string job_p = view_conf["input_job"]["placeholder"].get<std::string>();
+	std::string job_error = view_conf["input_job"]["error"].get<std::string>();
+	jobError->setVisible(false);
+	jobError->setText(QString::fromStdString(job_error));
+	std::unordered_set<std::string> jobs = view_conf["input_job"]["jobs"].get<std::unordered_set<std::string>>();
+	for (auto& element:jobs) 
+	{
+		job->addItem(QString::fromStdString(element));
+	}
+	job->setEditable(true);
+	job->setLineEdit(lineEdit);
+	job->lineEdit()->setText(QString::fromStdString(job_p));
+	job->lineEdit()->setReadOnly(true);
+	job->setVisible(job_enabled);
+	ui.verticalLayout->addWidget(job);
+	ui.verticalLayout->addWidget(jobError);
 	/////////////DATE FIELDS///////////
-	std::string label = view_conf["input_age"]["error"].get<std::string>();
-	birthdayError->setText(QString::fromStdString(label));
+	//setupFieldsLineEdit(birthdayError, birthday, view_conf["input_age"]);
+	std::string error_age = view_conf["input_age"]["error"].get<std::string>();
+	birthdayError->setText(QString::fromStdString(error_age));
+
+	std::string placeholder_day = view_conf["input_age"]["placeholder_day"].get<std::string>();
+	std::string placeholder_month = view_conf["input_age"]["placeholder_month"].get<std::string>();
+	std::string placeholder_year = view_conf["input_age"]["placeholder_year"].get<std::string>();
+	day->setPlaceholderText(QString::fromStdString(placeholder_day));
+	month->setPlaceholderText(QString::fromStdString(placeholder_month));
+	year->setPlaceholderText(QString::fromStdString(placeholder_year));
+
+	bool age_enabled = view_conf["fields"]["input_age"]["enabled"].get<bool>();
+	day->setVisible(age_enabled);
+	month->setVisible(age_enabled);
+	year->setVisible(age_enabled);
+	birthdayLabel->setVisible(age_enabled);
 	birthdayError->setVisible(false);
-	ui.verticalLayout->addWidget(birthday);
 
-	bool enabled = view_conf["input_age"]["enabled"].get<bool>();
-	birthday->setVisible(enabled);
+	std::string label_age = view_conf["input_age"]["label"].get<std::string>();
+	birthdayLabel->setText(QString::fromStdString(label_age));
+	birthdayLabel->setProperty("class","birthday_label");
+
+	birthdayLayout->addWidget(birthdayLabel);
+	birthdayLayout->addWidget(day);
+	birthdayLayout->addWidget(month);
+	birthdayLayout->addWidget(year);
+	ui.verticalLayout->addLayout(birthdayLayout);
 	ui.verticalLayout->addWidget(birthdayError);
-
 	/////////////PUSH BUTTONS///////////
+	std::string label_b = view_conf["button_next"]["label"].get<std::string>();
 	nextButton = new QPushButton(this);
-	nextButton->setText("NEXT");
+	nextButton->setText(QString::fromStdString(label_b));
 	ui.verticalLayout->addWidget(nextButton);
+
+	////////////Mandatory fields///////////
+	email_ = view_conf["fields"]["input_email"]["mandatory"].get<bool>();
+	job_= view_conf["fields"]["input_job"]["mandatory"].get<bool>();
+	birthday_= view_conf["fields"]["input_age"]["mandatory"].get<bool>();
+	adress_= view_conf["fields"]["input_adress"]["mandatory"].get<bool>();
+	name_= view_conf["fields"]["input_name"]["mandatory"].get<bool>();
+	phone_= view_conf["fields"]["input_phone"]["mandatory"].get<bool>();
 }
 
 void QFormWindow::initValidators()
@@ -84,33 +142,27 @@ void QFormWindow::initValidators()
 	QRegularExpression re("^\\p{L}+(?: \\p{L}+)*$");
 	textOnly = new QRegularExpressionValidator(re,0);
 
-	QRegularExpression num("^0[1-9]{9}$");
+	QRegularExpression phone("^0[1-9]{9}$");
+	phoneValid = new QRegularExpressionValidator(phone, 0);
+
+	QRegularExpression num("[0-9]*");
 	numericOnly = new QRegularExpressionValidator(num, 0);
 
 	QRegularExpression email("^[A-z0-9_.+-]+@[A-z]{1,}+\\.[A-z]{2,3}+$");
 	emailValid = new QRegularExpressionValidator(email, 0);
 }
 
-void QFormWindow::loadStyleSheet(QString cssFilePath)
-{
-	QFile styleFile(cssFilePath);
-	styleFile.open(QFile::ReadOnly);
-	QString style(styleFile.readAll());
-	setStyleSheet(style);
-	
-}
 
-
-void QFormWindow::setupFieldsLineEdit(QLabel* label, QLineEdit * lineEdit, json conf)
+void QFormWindow::setupFieldsLineEdit(QLabel* label, QLineEdit * lineEdit, std::string confName)
 {
 
-	std::string error = conf["error"].get<std::string>();
+	std::string error = view_conf[confName]["error"].get<std::string>();
 	label->setText(QString::fromStdString(error));
 
-	std::string placeholder = conf["placeholder"].get<std::string>();
+	std::string placeholder = view_conf[confName]["placeholder"].get<std::string>();
 	lineEdit->setPlaceholderText(QString::fromStdString(placeholder));
 
-	bool enabled = conf["enabled"].get<bool>();
+	bool enabled = view_conf["fields"][confName]["enabled"].get<bool>();
 	label->setVisible(false);
 	lineEdit->setVisible(enabled);
 
@@ -135,6 +187,7 @@ void QFormWindow::onNameTextChanged(const QString &newValue)
 		nameError->setVisible(false);
 	}
 	else {
+		if(name_)
 		nameError->setVisible(true);
 	}
 	
@@ -150,6 +203,7 @@ void QFormWindow::onJobTextChanged(const QString &newValue)
 		jobError->setVisible(false);
 	}
 	else {
+		if(job_)
 		jobError->setVisible(true);
 	}
 }
@@ -158,11 +212,12 @@ void QFormWindow::onPhoneTextChanged(const QString &newValue)
 {
 	int pos = 0;
 	QString value = newValue;
-	QValidator::State s = numericOnly->validate(value, pos);
+	QValidator::State s = phoneValid->validate(value, pos);
 	if (QValidator::Acceptable == s || value.size() == 0) {
 		phoneError->setVisible(false);
 	}
 	else {
+		if(phone_)
 		phoneError->setVisible(true);
 	}
 
@@ -178,10 +233,104 @@ void QFormWindow::onEmailTextChanged(const QString &newValue)
 		emailError->setVisible(false);
 	}
 	else {
+		if(email_)
 		emailError->setVisible(true);
 	}
 }
 
 void QFormWindow::onAdressTextChanged(const QString &newValue)
 {
+}
+
+void QFormWindow::handleMyLineEdit(bool hasfocus)
+{
+	
+	if (hasfocus)
+	{	
+		job->showPopup();
+	}
+
+}
+
+void QFormWindow::handleDayEdit(const QString & value_)
+{
+	int pos = 0;
+	QString value = value_;
+	QValidator::State s = numericOnly->validate(value, pos);
+	
+	if (QValidator::Acceptable != s)
+		day->setText("");
+	
+	if (birthday_) {
+		if (day->text().length() + month->text().length() + year->text().length() < 8) {
+			birthdayError->setVisible(true);
+		}
+		else {
+			birthdayError->setVisible(false);
+		}
+	}
+
+	if (day->text().length() == 2)
+		month->setFocus();
+
+}
+
+void QFormWindow::handleMonthEdit(const QString & value_)
+{
+	int pos = 0;
+	QString value = value_;
+	QValidator::State s = numericOnly->validate(value, pos);
+	if (QValidator::Acceptable != s)
+		month->setText("");
+	
+	if (birthday_) {
+		if (day->text().length() + month->text().length() + year->text().length() < 8) {
+			birthdayError->setVisible(true);
+		}
+		else {
+			birthdayError->setVisible(false);
+		}
+	}
+
+	if (month->text().length() == 2)
+		year->setFocus();
+	
+}
+
+void QFormWindow::handleYearEdit(const QString & value_)
+{
+	int pos = 0;
+	QString value = value_;
+	QValidator::State s = numericOnly->validate(value, pos);
+	if (QValidator::Acceptable != s)
+		year->setText("");
+
+	if (value.length() == 4) {
+		if (birthday_) {
+			if (day->text().length() + month->text().length() + year->text().length() < 8) {
+				birthdayError->setVisible(true);
+			}
+			else {
+				birthdayError->setVisible(false);
+			}
+		}
+	}
+}
+
+void QFormWindow::handleNextButton()
+{
+	QLabel *labels[6] = { nameError, phoneError, jobError, adressError, emailError, birthdayError };
+	for (auto& label_ : labels) 
+	{
+		if (label_->isVisible()) 
+		{
+			nextButton->setEnabled(false);
+			break;
+		}
+	}
+
+	if (nextButton->isEnabled()) 
+	{
+		emit(next("FormWindow"));
+	}
 }

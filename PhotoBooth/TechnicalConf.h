@@ -16,12 +16,7 @@ private:
 	std::string camera_driver;
 	std::string printer_version;
 	std::string printer_driver;
-	json form_view;
-	json format_view;
-	json print_view;
-	json take_photo_view;
-	json services;
-	json credentials;
+	json form_view, format_view, print_view, take_photo_view, services, credentials, nextViews;
 	void findCredentials();
 	void findHardwareConf();
 	void findViewsLanguage();

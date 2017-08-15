@@ -65,17 +65,45 @@ using namespace std;
 #include "Gui.h"
 #include <QtWidgets/QApplication>
 #include "FormWindow.h"
-
+#include <mainwindow.h>
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
-	QFormWindow w;
-	CTechnicalConf *technicalConf = new CTechnicalConf();
-	technicalConf->init("C:\\projects\\PhotoBooth\\photobooth_data\\technical.json");
-	w.init(technicalConf->getFormView(), "C:\\projects\\PhotoBooth\\photobooth_data\\style-coffee.qss");
-	w.show();
+	MainWindow *w_main = new MainWindow();
+	//QFormWindow w;
+	//CTechnicalConf *technicalConf = new CTechnicalConf();
+	//technicalConf->init("C:\\projects\\PhotoBooth\\photobooth_data\\technical.json");
+	//w.init(technicalConf->getFormView(), "C:\\projects\\PhotoBooth\\photobooth_data\\style-coffee.qss");
+	//w.show();
+	w_main->init();
+	w_main->show();
 	return app.exec();
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////// Fin Test QT   ///////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//#include <QtGui>
+//#include <QDate>
+//#include <QApplication>
+//#include "DatePopup.h"
+//#include <iostream>
+//
+//int main(int argc, char *argv[])
+//{
+//	QApplication a(argc, argv);
+//
+//	DatePopup popup;
+//
+//	int result = popup.exec();
+//	if (result == QDialog::Accepted) {
+//		QDate date = popup.selectedDate();
+//		std::cout << date.year() << std::endl;
+//		std::cout << date.month() << std::endl;
+//		std::cout << date.day() << std::endl;
+//	}
+//
+//	return a.exec();
+//}
