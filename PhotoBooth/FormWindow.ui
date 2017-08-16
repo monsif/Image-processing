@@ -53,6 +53,9 @@
    </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="rightMargin">
+      <number>40</number>
+     </property>
      <item>
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
