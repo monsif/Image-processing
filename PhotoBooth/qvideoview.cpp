@@ -18,17 +18,19 @@ QVideoView::QVideoView(json conf,QWidget *parent)
 	connect(this, &QVideoView::mouseClicked, this, &QVideoView::handleNextButton);
 	ui.videoLayout->addWidget(video);
 	
+	
 	player = new QMediaPlayer(this);
-	// owned by PlaylistModel
-	//playlist = new QMediaPlaylist(player);
-	//player->setPlaylist(playlist);
 	player->setVideoOutput(video);
+	playlist = new QMediaPlaylist();
 
-	//const QString path = QString::fromStdString();
-	//QFile file("C:/projects/PhotoBooth/PhotoBooth/Resources/nespresso.mp4");
-	std::string path = conf["video_path"].get<std::string>();
-	player->setMedia(QUrl::fromLocalFile(QString::fromStdString(path)));
-	video->show();
+	std::unordered_set<std::string> videos = conf["videos"].get<std::unordered_set<std::string>>();
+	for (auto& element : videos)
+	{
+	playlist->addMedia(QUrl::fromLocalFile(QString::fromStdString(element)));
+	}
+	playlist->setPlaybackMode(QMediaPlaylist::Loop);
+	
+	player->setPlaylist(playlist);
 	player->play();
 }
 

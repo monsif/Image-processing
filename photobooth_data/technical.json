@@ -40,17 +40,22 @@
          "enabled":true
       }
    },
+   "videos" :[
+               "C:/projects/PhotoBooth/PhotoBooth/Resources/SampleVideo_1280x720_1mb.mp4",
+               "C:/projects/PhotoBooth/PhotoBooth/Resources/SampleVideo_1280x720_2mb.mp4"
+               ] ,
    "photo_text" : {
    "value" : "Joyeux Anniversaire",
    "italic" : false,
    "weight" : 800,
     "point_size" : 42
    },
-   "FirstView" : "FormWindow",
+   "FirstView" : "Video",
    "next" : {
+   "WelcomeWindow" : "FormWindow",
    "FormWindow" : "PhotoPrintFormatView",
-   "TakePhotoWindow" : "FormWindow",
-   "PhotoPrintFormatView" : "TakePhotoWindow"
+   "PhotoPrintFormatView" : "TakePhotoWindow",
+   "TakePhotoWindow" : "WelcomeWindow"
    },
    "languages":{
       "FR":{

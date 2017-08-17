@@ -96,7 +96,7 @@ void MainWindow::update()
 	abstractView->hide();
 	//delete abstractView;
 	abstractView = nextView;
-	nextView = nullptr;
+	//nextView = nullptr;
 	ui.mainFrameLayout->addWidget(abstractView);
 	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
 	abstractView->setGraphicsEffect(eff);
