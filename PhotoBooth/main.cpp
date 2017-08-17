@@ -70,13 +70,27 @@ int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
 	MainWindow *w_main = new MainWindow();
-	//QFormWindow w;
-	//CTechnicalConf *technicalConf = new CTechnicalConf();
-	//technicalConf->init("C:\\projects\\PhotoBooth\\photobooth_data\\technical.json");
-	//w.init(technicalConf->getFormView(), "C:\\projects\\PhotoBooth\\photobooth_data\\style-coffee.qss");
-	//w.show();
+	////QFormWindow w;
+	////CTechnicalConf *technicalConf = new CTechnicalConf();
+	////technicalConf->init("C:\\projects\\PhotoBooth\\photobooth_data\\technical.json");
+	////w.init(technicalConf->getFormView(), "C:\\projects\\PhotoBooth\\photobooth_data\\style-coffee.qss");
+	////w.show();
 	w_main->init();
 	w_main->show();
+	//QMediaPlaylist *playlist = new QMediaPlaylist();
+	//playlist->addMedia(QUrl("C:/projects/PhotoBooth/PhotoBooth/Resources/nespresso.mp4"));
+	////playlist->addMedia(QUrl("http://example.com/movie2.mp4"));
+	////playlist->addMedia(QUrl("http://example.com/movie3.mp4"));
+	//playlist->setCurrentIndex(1);
+	//
+	//QMediaPlayer *player = new QMediaPlayer();
+	//player->setPlaylist(playlist);
+	//
+	//QVideoWidget *videoWidget = new QVideoWidget();
+	//player->setVideoOutput(videoWidget);
+	//videoWidget->show();
+	//
+	//player->play();
 	return app.exec();
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

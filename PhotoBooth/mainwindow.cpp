@@ -16,7 +16,10 @@ void MainWindow::init()
 	
 	loadStyleSheet("C:\\projects\\PhotoBooth\\photobooth_data\\style-coffee.qss");
 	
-	abstractView = new QFormWindow(technicalConf->getFormView(),this);
+	std::string firstView=technicalConf->GetConfiguration()["FirstView"].get<std::string>();
+	if (firstView.compare("Video") == 0) {
+		abstractView = new QVideoView(technicalConf->GetConfiguration(),this);
+	}
 	
 	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
 	
@@ -65,7 +68,11 @@ AbstractView* MainWindow::getNextView(std::string nextView)
 	}
 
 	if (nextView.compare("PhotoPrintFormatView") == 0) {
-		return new PhotoPrintFormat(technicalConf->GetConfiguration(),this);
+		return new PhotoPrintFormat(technicalConf->GetConfiguration(), this);
+	}
+
+	if (nextView.compare("WelcomeWindow") == 0) {
+		return new QVideoView(technicalConf->GetConfiguration(), this);
 	}
 }
 

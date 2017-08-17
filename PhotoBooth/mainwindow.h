@@ -13,6 +13,7 @@
 #include <AbstractView.h>
 #include <PhotoPrintFormat.h>
 #include <QGraphicsOpacityEffect>
+#include <qvideoview.h>
 
 class MainWindow : public QWidget
 {
@@ -37,7 +38,6 @@ private:
 	AbstractView* MainWindow::getNextView(std::string nextView);
 	QGraphicsOpacityEffect *eff;
 	QPropertyAnimation *anim;
-	//handlePhotoView -> print/share photo
 };
 
 #endif // MAINWINDOW_H
