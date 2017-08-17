@@ -44,6 +44,7 @@
                "C:/projects/PhotoBooth/PhotoBooth/Resources/SampleVideo_1280x720_1mb.mp4",
                "C:/projects/PhotoBooth/PhotoBooth/Resources/SampleVideo_1280x720_2mb.mp4"
                ] ,
+			   
    "photo_text" : {
    "value" : "Joyeux Anniversaire",
    "italic" : false,
