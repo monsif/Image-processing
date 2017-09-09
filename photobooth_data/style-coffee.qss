@@ -1,0 +1,144 @@
+.QWidget {
+   /*background-color: beige;   */
+
+}
+
+/* Nice Windows-XP-style password character. */
+QLineEdit[echoMode="2"] {
+    lineedit-password-character: 9679;
+}
+
+/* We provide a min-width and min-height for push buttons
+   so that they look elegant regardless of the width of the text. */
+QPushButton {
+    background-color: palegoldenrod;
+    border-width: 2px;
+    border-color: darkkhaki;
+    border-style: solid;
+    border-radius: 5;
+    padding: 3px;
+    min-width: 9ex;
+    min-height: 2.5ex;
+	font: 20px;
+}
+
+QPushButton:hover {
+   background-color: khaki;
+}
+
+/* Increase the padding, so the text is shifted when the button is
+   pressed. */
+QPushButton:pressed {
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: #d0d67c;
+}
+
+QAbstractButton {
+    font: bold;
+}
+
+QDateEdit{
+	font: 20px;
+	margin:	0;
+	padding: 0;
+	text-indent: 0;
+}
+
+
+QLineEdit {
+    border-width: 2px;
+    padding: 1px;
+    border-style: solid;
+    border-color: darkkhaki;
+    border-radius: 5px;
+	font: 20px;
+	margin:	0;
+	padding: 0;
+	width:80%;
+	text-indent: 0;
+}
+
+/* As mentioned above, eliminate the padding and increase the border. */
+QLineEdit:focus,QDateEdit:focus,QComboBox:focus {
+    border-width: 3px;
+    padding: 0px;
+	border-color: #4ebdef;
+}
+
+QComboBox {
+    border: 2px solid gray;
+    border-radius: 3px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+	width:80%;
+	font: 20px;
+	background-color:white;
+}
+
+QComboBox:on { 
+    padding-top: 3px;
+    padding-left: 4px;
+	width:80%;
+	border-color: #4ebdef;
+	background-color:white;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+	subcontrol-color:white;
+    width: 15px;
+	background-color:white;
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid; 
+    border-top-right-radius: 3px; 
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox QAbstractItemView{
+border: 2px solid #4ebdef;
+background-color:white;
+selection-background-color: lightgray;
+selection-border-color: none;
+border-top-color:none;
+}
+
+QComboBox::down-arrow:on { 
+    top: 1px;
+    left: 1px;
+}
+
+/* A QLabel is a QFrame ... */
+*[class=error_label]{
+    background: none;
+	font: 20px aria, sans-serif;
+	color:red;
+	border-width: 2px;
+    padding: 1px;
+    border-style: solid;
+    border-radius: 5px;
+	font: 20px;
+	margin:	0;
+	width:80%;
+	text-indent: 0;
+}
+*[class=birthday_label]{
+font: 20px aria, sans-serif;
+color:white;
+}
+
+*[class=main]{
+border-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/working.png") 0 0 0 0 stretch stretch;
+}
+*[class=photoText]{
+qproperty-alignment:AlignCenter;
+color:black;
+}
+
+MainWindow {
+background-position: center;
+font: 11pt "Times New Roman";
+border-style:trasparent;
+}

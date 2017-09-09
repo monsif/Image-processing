@@ -1,30 +1,4 @@
-/*******************************************************************************
-* FunctionalConf.h : le fichier header de la classe CFunctionalConf
-*******************************************************************************
-*
-*
-*
-*******************************************************************************
-* author	: Amine ELKHARROUBI
-* date		:
-* version	:
-*******************************************************************************
-*  LISTE DES CLASSES DU MODULE :
-*
-*  Class       : CFunctionalConf
-*  Description :
-*
-*  LISTE DES FONCTIONS DU MODULE :
-*
-*******************************************************************************
-* MODIFICATIONS
-* -----------------------------------------------------------------------------
-* Date			: Ver	: Auteur	: Ident		: Commentaires
-* -----------------------------------------------------------------------------
-* 	            : 	    : 	       :	        :
-**************************************************************************** */
 // -----------------------------------------------------------------------------
-
 #ifndef FUNCTIONALCONF_H_
 #define FUNCTIONALCONF_H_
 
@@ -32,13 +6,16 @@
 // FICHIERS D'INCLUSION
 
 #include "Config.h"
-
+#include <list>
 // -----------------------------------------------------------------------------
 
 class CFunctionalConf : public CConfig
 {
+private :
+	std::list<char> language;
 public:
 	CFunctionalConf();
+	void init(char url[]);
 	~CFunctionalConf();
 };
 

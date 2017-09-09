@@ -1,46 +1,23 @@
-/*******************************************************************************
-* TakePhotoWindow.h : le fichier header de la classe QTakePhotoWindow
-*******************************************************************************
-*
-*
-*
-*******************************************************************************
-* author	: Amine ELKHARROUBI
-* date		:
-* version	:
-*******************************************************************************
-*  LISTE DES CLASSES DU MODULE :
-*
-*  Class       : QTakePhotoWindow
-*  Description :
-*
-*  LISTE DES FONCTIONS DU MODULE :
-*
-*******************************************************************************
-* MODIFICATIONS
-* -----------------------------------------------------------------------------
-* Date			: Ver	: Auteur	: Ident		: Commentaires
-* -----------------------------------------------------------------------------
-* 	            : 	    : 	       :	        :
-**************************************************************************** */
-// -----------------------------------------------------------------------------
 #ifndef TAKEPHOTOWINDOW_H_
 #define TAKEPHOTOWINDOW_H_
 // -----------------------------------------------------------------------------
 // FICHIERS D'INCLUSION
 
-#include <QWidget>
-#include "ui_TakePhotoWindow.h"
 
+#include "ui_TakePhotoWindow.h"
+#include <AbstractView.h>
 // -----------------------------------------------------------------------------
 
-class QTakePhotoWindow : public QWidget
+class QTakePhotoWindow : public AbstractView
 {
 	Q_OBJECT
 
 public:
-	QTakePhotoWindow(QWidget *parent = 0);
+	QTakePhotoWindow(QWidget *parent);
 	~QTakePhotoWindow();
+
+private slots:
+	void handleButton();
 
 private:
 	Ui::QTakePhotoWindow ui;
