@@ -43,7 +43,7 @@ public:
 	CImageProcessing();
 	~CImageProcessing();
 
-	void  SaveImageProcessing(char* szPath, cv::Mat image);
+	void      SaveImageProcessing(char* szPath, cv::Mat image);
 	cv::Mat   RecursFilter(char* szPathImage);
 	cv::Mat   NormconvFilter(char* szPathImage);
 	cv::Mat   EnhanceFilter(char* szPathImage);
