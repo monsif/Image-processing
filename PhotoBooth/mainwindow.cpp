@@ -94,13 +94,21 @@ void MainWindow::update()
 	//	tmr->stop();
 	//}
 	abstractView->hide();
-	//delete abstractView;
+	delete abstractView;
+	abstractView = new AbstractView();
 	abstractView = nextView;
 	//nextView = nullptr;
 	ui.mainFrameLayout->addWidget(abstractView);
 	connect(abstractView, &AbstractView::next, this, &MainWindow::handleNextView);
+	eff = new QGraphicsOpacityEffect(this);
 	abstractView->setGraphicsEffect(eff);
 	eff->setOpacity(1.0);
+	anim = new QPropertyAnimation(eff, "opacity");
+	anim->setDuration(700);
+	anim->setStartValue(1);
+	anim->setEndValue(0);
+	anim->setEasingCurve(QEasingCurve::OutBack);
+	connect(anim, SIGNAL(finished()), this, SLOT(update()));
 }
 
 MainWindow::~MainWindow()

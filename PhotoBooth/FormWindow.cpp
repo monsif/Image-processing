@@ -311,16 +311,17 @@ void QFormWindow::handleYearEdit(const QString & value_)
 	if (QValidator::Acceptable != s)
 		year->setText("");
 
-	if (value.length() == 4) {
-		if (birthday_) {
-			if (day->text().length() + month->text().length() + year->text().length() < 8) {
+		if (birthday_) 
+		{
+			if (day->text().length() + month->text().length() + year->text().length() < 8) 
+			{
 				birthdayError->setVisible(true);
 			}
-			else {
+			else 
+			{
 				birthdayError->setVisible(false);
 			}
 		}
-	}
 }
 
 void QFormWindow::handleNextButton()
@@ -328,15 +329,8 @@ void QFormWindow::handleNextButton()
 	QLabel *labels[6] = { nameError, phoneError, jobError, adressError, emailError, birthdayError };
 	for (auto& label_ : labels) 
 	{
-		if (label_->isVisible()) 
-		{
-			nextButton->setEnabled(false);
-			break;
-		}
+		if (label_->isVisible())
+			return;
 	}
-
-	if (nextButton->isEnabled()) 
-	{
-		emit(next("FormWindow"));
-	}
+	emit(next("FormWindow"));
 }
