@@ -115,7 +115,7 @@ void CEVFPictureBox::update(Observable* from, CameraEvent *e)
 LRESULT CEVFPictureBox::OnEvfDataChanged(WPARAM wParam, LPARAM lParam)
 {
 	EVF_DATASET data = *(EVF_DATASET *)wParam;
-	EdsUInt32 size;
+	EdsUInt64 size;
 
 	unsigned char* pbyteImage = NULL; 
 
