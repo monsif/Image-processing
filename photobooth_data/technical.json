@@ -1,0 +1,119 @@
+{
+   "printer_driver":"Dnp C++ driver",
+   "printer_version":"DNP RX1 HS",
+   "camera_driver":"Canon EOS API",
+   "camera_version":"Canon OES 1000D",
+   "css_file":"path_tocss_file",
+   "active_language":"FR",
+   "credentials":{
+      "usename":"batch$owner",
+      "password":"crypted password"
+   },
+   "services":{
+      "photo_cloud_service":"url where to upload photos to server",
+      "statistic_service":"",
+      "user_data_service":""
+   },
+   "fields":{
+      "input_name":{
+         "mandatory":false,
+         "enabled":true
+      },
+      "input_email":{
+         "mandatory":true,
+         "enabled":true
+      },
+      "input_phone":{
+         "mandatory":false,
+         "enabled":true
+      },
+      "input_adress":{
+         "mandatory":true,
+         "enabled":true
+      },
+      "input_job":{
+         "mandatory":true,
+         "enabled":true
+      },
+      "input_age":{
+         "mandatory":true,
+         "enabled":true
+      }
+   },
+   "videos" :[
+               "C:/projects/PhotoBooth/PhotoBooth/Resources/nespresso.mp4"
+               ] ,
+			   
+   "photo_text" : {
+   "value" : "Joyeux Anniversaire",
+   "italic" : false,
+   "weight" : 800,
+    "point_size" : 42
+   },
+   "FirstView" : "Video",
+   "next" : {
+   "WelcomeWindow" : "FormWindow",
+   "FormWindow" : "PhotoPrintFormatView",
+   "PhotoPrintFormatView" : "TakePhotoWindow",
+   "TakePhotoWindow" : "WelcomeWindow"
+   },
+   "languages":{
+      "FR":{
+         "form_view":{
+            "input_name":{
+               "placeholder":"Nom complet",
+               "error":"Merci de saisir un nom valide"
+            },
+            "input_email":{
+               "placeholder":"Adresse email",
+               "error":"L'adresse email n'est pas valide"
+            },
+            "input_phone":{
+               "placeholder":"Numéro de téléphone",
+               "error":"Numéro de téléphone non valide"
+            },
+            "input_adress":{
+               "placeholder":"Adresse postale",
+               "error":"L'adresse email n'est pas valide"
+            },
+            "input_job":{
+               "placeholder":"Profession",
+               "error":"Merci de saisir votre emploi",
+               "jobs":[
+                  "Cadre",
+                  "Employe",
+                  "Sans emploi",
+                  "Etudiant"
+               ]
+            },
+            "input_age":{
+               "placeholder_day":"Jour",
+               "placeholder_month":"Mois",
+               "placeholder_year":"Année",
+               "label":"Date De Naissance",
+               "error":"Merci de saisir vote date de naissance JJ/MM/YYYY"
+            },
+            "button_next":{
+               "label":"Suivant",
+               "action":""
+            }
+         },
+         "format_view":{
+
+         },
+         "print_view":{
+            "printing_msg":"Photo En cours d'impression...",
+            "print_button":"Imprimer",
+            "filtres":{
+               "sepia":"Sépia",
+               "gray":"Gris",
+               "color":"Couleur"
+            }
+         },
+         "take_photo_view":{
+            "three_shots":"Trois prises",
+            "portrait":"Portrait"
+         }
+      }
+   }
+}

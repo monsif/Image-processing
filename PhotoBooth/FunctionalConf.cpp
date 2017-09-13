@@ -1,51 +1,10 @@
-/*******************************************************************************
-* FunctionalConf.cpp : le fichier header de la classe CFunctionalConf
-*******************************************************************************
-*
-*
-*
-*******************************************************************************
-* author	: Amine ELKHARROUBI
-* date		:
-* version	:
-*******************************************************************************
-*  LISTE DES CLASSES DU MODULE :
-*
-*  Class       : CFunctionalConf
-*  Description :
-*
-*  LISTE DES FONCTIONS DU MODULE :
-*
-*******************************************************************************
-* MODIFICATIONS
-* -----------------------------------------------------------------------------
-* Date			: Ver	: Auteur	: Ident		: Commentaires
-* -----------------------------------------------------------------------------
-* 	            : 	    : 	       :	        :
-**************************************************************************** */
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
-// FICHIERS D'INCLUSION
-
 #include "FunctionalConf.h"
+#include "Config.h"
+// -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
-using namespace std;
-
-
-
-// -----------------------------------------------------------------------------
-// CFunctionalConf::CFunctionalConf
-/////** \brief Le constructeur de la classe CFunctionalConf.
 /*
-* @param[char* ]
-* @exception
-* @return
-*
 * @details Traitement :
-*
-*
 */
 // -----------------------------------------------------------------------------
 CFunctionalConf::CFunctionalConf()
@@ -53,17 +12,15 @@ CFunctionalConf::CFunctionalConf()
 
 }
 
+void CFunctionalConf::init(char url[])
+{
+	LoadConf(url);
+	
+}
+
 // -----------------------------------------------------------------------------
-// CFunctionalConf::~CFunctionalConf
-/////** \brief Le destructeur de la classe CFunctionalConf.
 /*
-* @param[char* ]
-* @exception
-* @return
-*
 * @details Traitement :
-*
-*
 */
 // -----------------------------------------------------------------------------
 CFunctionalConf::~CFunctionalConf()
