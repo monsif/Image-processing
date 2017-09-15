@@ -12,9 +12,9 @@ void MainWindow::init()
 	ui.setupUi(this);
 	ui.frame->setProperty("class", "main");
 	technicalConf = new CTechnicalConf();
-	technicalConf->init("C:\\projects\\PhotoBooth\\photobooth_data\\technical.json");
+	technicalConf->init("C:\\projects\\Image-processing\\photobooth_data\\technical.json");
 	
-	loadStyleSheet("C:\\projects\\PhotoBooth\\photobooth_data\\style-coffee.qss");
+	loadStyleSheet("C:\\projects\\Image-processing\\photobooth_data\\style-coffee.qss");
 	
 	std::string firstView=technicalConf->GetConfiguration()["FirstView"].get<std::string>();
 	if (firstView.compare("Video") == 0) {

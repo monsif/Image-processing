@@ -130,7 +130,7 @@ color:white;
 }
 
 *[class=main]{
-border-image: url("C:/projects/PhotoBooth/PhotoBooth/Resources/working.png") 0 0 0 0 stretch stretch;
+border-image: url("C:/projects/Image-processing/PhotoBooth/Resources/working.png") 0 0 0 0 stretch stretch;
 }
 *[class=photoText]{
 qproperty-alignment:AlignCenter;

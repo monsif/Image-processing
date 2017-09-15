@@ -55,7 +55,10 @@ CImageProcessing::~CImageProcessing()
 // -----------------------------------------------------------------------------
 void   CImageProcessing::SaveImageProcessing(char* szPath, Mat image)
 {
-	imwrite(szPath, image);
+	std::vector<int> qualityType;
+	qualityType.push_back(IMWRITE_PNG_COMPRESSION);
+	qualityType.push_back(90);
+	imwrite(szPath, image, qualityType);
 }
 
 // -----------------------------------------------------------------------------

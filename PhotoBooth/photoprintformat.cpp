@@ -8,7 +8,7 @@ PhotoPrintFormat::PhotoPrintFormat(json conf,QWidget *parent)
 	connect(ui.multiple, &QPushButton::clicked, this, &PhotoPrintFormat::handleButton);
 	connect(ui.single, &QPushButton::clicked, this, &PhotoPrintFormat::handleButton);
 	
-	int id = QFontDatabase::addApplicationFont("C:\\projects\\PhotoBooth\\photobooth_data\\font.ttf");
+	int id = QFontDatabase::addApplicationFont("C:\\projects\\Image-processing\\photobooth_data\\font.ttf");
 	QString family = QFontDatabase::applicationFontFamilies(id).at(0);
 	
 	int weight = conf["photo_text"]["weight"].get<int>();
